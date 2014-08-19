@@ -1,7 +1,7 @@
-from server.twitinfo.models import Event
-from server.twitinfo.models import Keyword
-from server.twitinfo.models import Tweet
-from server.twitinfo.models import WordFrequency
+from twitinfo.models import Event
+from twitinfo.models import Keyword
+from twitinfo.models import Tweet
+from twitinfo.models import WordFrequency
 from django.contrib import admin
 
 admin.site.register(Event)

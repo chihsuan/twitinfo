@@ -7,7 +7,7 @@ from django.core.urlresolvers import reverse
 from django.db.models import Avg, Max, Min, Count, Sum, F
 from django.template import RequestContext, Context, Template, loader
 from django.views.decorators.cache import cache_page
-from server.twitinfo.models import Event,Tweet,Keyword,WordFrequency
+from twitinfo.models import Event,Tweet,Keyword,WordFrequency
 from datetime import datetime,timedelta
 from operator import itemgetter
 import itertools
@@ -18,7 +18,8 @@ import random
 import sys
 import settings
 sys.path.append(settings.SSQL_PATH)
-from ssql.builtin_functions import MeanOutliers
+
+from tweeql.builtin_functions import MeanOutliers
 
 NUM_TWEETS = 20 # total tweets to display
 NUM_LINKS = 3 # total top links to display
@@ -333,7 +334,8 @@ def create_graph_impl(request, event_id):
     sdate = e.start_date
     edate = e.end_date
     tweets = Tweet.objects.filter(keyword__event = event_id)
-    
+    print 'tweets....'
+    print sdate, tweets
     if sdate == None:
         sdate=tweets.order_by('created_at')[0].created_at
     if edate == None:
