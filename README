@@ -13,3 +13,7 @@ https://github.com/mitdbg/twitinfo/blob/master/server/stream_tweets.py
 As a sanity check for your setup working, after running "python manage.py
 runserver 0.0.0.0:8000" you should be able to access
 http://server_ip_address:8000/create_event to create an event to track.
+
+Database Synchronization  "python manage.py syncdb"
+
+install ssql -> https://github.com/marcua/tweeql
