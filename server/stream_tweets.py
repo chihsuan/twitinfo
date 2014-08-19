@@ -1,7 +1,8 @@
-import settings
-from django.core.management import setup_environ
-setup_environ(settings)
-from twitinfo.models import Keyword
+import os
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "twitinfo.settings")
+from django.conf import settings
+from twitinfo.models import Keyword, Tweet
 from threading import Timer
 
 import datetime
@@ -10,7 +11,7 @@ import traceback
 import time
 import sys
 sys.path.append(settings.SSQL_PATH)
-from ssql.query_runner import QueryRunner
+from tweeql.query_runner import QueryRunner
 
 def query_keywords(rerun_regardless, runner, old_query):
     keywords = Keyword.objects.all().order_by('key_word').values_list('key_word', flat=True)
